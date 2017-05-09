@@ -20,31 +20,37 @@ public class ProfileController {
 
 	@Autowired
 	ProfileService profileService;
-	
-	
-	
-	
-	
+
 	@RequestMapping("/startprofile")
 	public String startProfile(Model model) {
-		if(!model.containsAttribute("personalInfo")){
-		Person personalInfo = new Person();
-		model.addAttribute("personalInfo", personalInfo);
+		if (!model.containsAttribute("personalInfo")) {
+			Person personalInfo = new Person();
+			model.addAttribute("personalInfo", personalInfo);
 		}
 		return "startprofile";
 	}
 
 	@RequestMapping(value = "saveprofile", method = RequestMethod.POST)
 	public String addPersonalInfo(@Valid @ModelAttribute("personalInfo") Person user, BindingResult result,
-			 final RedirectAttributes redirectAttributes, Model model) {
+			final RedirectAttributes redirectAttributes, Model model) {
 		if (result.hasErrors()) {
-			 redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.personalInfo", result);
-			 
-	            redirectAttributes.addFlashAttribute("personalInfo", user);
+			redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.personalInfo", result);
+
+			redirectAttributes.addFlashAttribute("personalInfo", user);
 			return "redirect:startprofile";
 		}
-		
+
 		profileService.saveProfile(user);
+		redirectAttributes.addFlashAttribute("personalInfo", user);
+		return "redirect:registrationsucess";
+	}
+
+	@RequestMapping("/registrationsucess")
+	public String registrationSuccess(Model model) {
+		if (!model.containsAttribute("personalInfo")) {
+			Person personalInfo = new Person();
+			model.addAttribute("personalInfo", personalInfo);
+		}
 		return "registrationsucess";
 	}
 

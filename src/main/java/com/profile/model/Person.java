@@ -20,17 +20,15 @@ public class Person {
 	 private String dob;
 	private ArrayList<Address> address;
 	private ArrayList<Phone> listOfPhoneDetails;
-//	@NotEmpty(message = "Please enter vaild email.")
-//	 @NotNull(message = "Please enter vaild email.")
-//	 @Email(message = "Please enter vaild email.")
-	private ArrayList<Email> email;
+
+	private ArrayList<EmailAdddress> email;
 	
 //	private ArrayList<EducationDetail> educationDetails;
 //	private ArrayList<ExperienceDetail> experienceDetails;
 //	
 	
 	public Person(String firstName, String lastName, ArrayList<Address> address, ArrayList<Phone> listOfPhoneDetails,
-			ArrayList<Email> email, ArrayList<EducationDetail> educationDetails,
+			ArrayList<EmailAdddress> email, ArrayList<EducationDetail> educationDetails,
 			ArrayList<ExperienceDetail> experienceDetails) {
 		super();
 		this.firstName = firstName;
@@ -50,7 +48,7 @@ public class Person {
 	
 	
 	public Person(String firstName, String lastName, ArrayList<Address> address, ArrayList<Phone> listOfPhoneDetails,
-			ArrayList<Email> email) {
+			ArrayList<EmailAdddress> email) {
 		
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -98,12 +96,12 @@ public class Person {
 	}
 
 
-	public ArrayList<Email> getEmail() {
+	public ArrayList<EmailAdddress> getEmail() {
 		return email;
 	}
 
 
-	public void setEmail(ArrayList<Email> email) {
+	public void setEmail(ArrayList<EmailAdddress> email) {
 		this.email = email;
 	}
 

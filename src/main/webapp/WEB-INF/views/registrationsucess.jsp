@@ -28,15 +28,17 @@
                 <td>Last Name</td>
                 <td>${personalInfo.lastName}</td>
             </tr>
+               <c:forEach items="${personalInfo.address}" var="address" varStatus="status">
              <tr>
                 <td>Address</td>
-                <td>${personalInfo.address.addressLine1} <br/>
-                ${personalInfo.address.addressLine2} <br/>
-                ${personalInfo.address.city} <br/>
-                ${personalInfo.address.state} <br/>
-                ${personalInfo.address.zip} <br/>
+                <td>${address.addressLine1} <br/>
+                ${address.addressLine2} <br/>
+                ${address.city} <br/>
+                ${address.state} <br/>
+                ${address.zip} <br/>
                 </td>
             </tr>
+            </c:forEach>
          <c:forEach items="${personalInfo.listOfPhoneDetails}" var="contact" varStatus="status">
 		<tr>
 			<td>${contact.phoneType}</td>
@@ -46,14 +48,23 @@
 		</tr>
            
  </c:forEach>
+ 
+   <c:forEach items="${personalInfo.email}" var="email" varStatus="status">
+ <c:if test="${email.emailType=='EMAIL'}">
  <tr>
+ 	
                 <td>Email</td>
-                <td>${personalInfo.emailAddress}</td>
+                <td>${email.emailAddress}</td>
             </tr>
+</c:if>
+<c:if test="${email.emailType=='ALTEMAIL'}">
   <tr>
                 <td>Alternate Email</td>
-                <td>${personalInfo.altEmailAddress}</td>
-            </tr>
+                <td>${email.emailAddress}</td>
+           </tr>
+           </c:if>
+          
+   </c:forEach>
         </table>
     </div>
 </body>

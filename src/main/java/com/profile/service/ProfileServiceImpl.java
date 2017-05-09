@@ -18,15 +18,18 @@ public class ProfileServiceImpl implements ProfileService {
 	
 
 	@Override
-	public void saveProfile(Person p) {
+	public void saveProfile(Person person) {
 		PersonEntity personEntity=null;
-		if(p!=null){
-			personEntity=new EntityModelMapper().convertDTOToEntity(p);
-			 profileRepository.save(personEntity);
+		if(person!=null){
+			personEntity=new EntityModelMapper().convertDTOToEntity(person);
+			personEntity=profileRepository.save(personEntity);
 		}
 
 		
 
 	}
+
+
+	
 
 }

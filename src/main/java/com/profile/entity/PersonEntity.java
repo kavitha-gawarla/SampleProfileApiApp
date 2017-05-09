@@ -1,6 +1,8 @@
 package com.profile.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.profile.model.Person;
 
@@ -30,6 +37,10 @@ public class PersonEntity implements Serializable{
 	
 	@Column(name="DOB")
 	private String dob;
+	
+	 @Temporal(TemporalType.TIMESTAMP)
+	 @Column(name = "LastUpdtTs", updatable = false,insertable=true)
+	private Date updateDateTime;
 	
 	
 	@OneToMany(mappedBy="personEntity",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
@@ -112,6 +123,14 @@ public class PersonEntity implements Serializable{
 
 	public void setPhoneDetails(Set<PhoneEntity> phoneDetails) {
 		this.phoneDetails = phoneDetails;
+	}
+
+	public Date getUpdateDateTime() {
+		return updateDateTime;
+	}
+
+	public void setUpdateDateTime(Date updateDateTime) {
+		this.updateDateTime = updateDateTime;
 	}
 
 	

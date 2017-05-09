@@ -9,8 +9,10 @@ import com.profile.entity.AddressEntity;
 import com.profile.entity.EmailEntity;
 import com.profile.entity.PersonEntity;
 import com.profile.entity.PhoneEntity;
-import com.profile.model.*;
-import com.profile.model.Email;
+import com.profile.model.Address;
+import com.profile.model.EmailAdddress;
+import com.profile.model.Person;
+import com.profile.model.Phone;
 
 public class EntityModelMapper {
 
@@ -40,7 +42,7 @@ public class EntityModelMapper {
 			
 			if(person.getEmail()!=null){
 				HashSet<EmailEntity> emails = new HashSet<EmailEntity>();
-				for(Email email : person.getEmail()){
+				for(EmailAdddress email : person.getEmail()){
 					emails.add(new EmailEntity(email,personEntity));
 				}
 				personEntity.setEmailDetails(emails);
