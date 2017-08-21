@@ -16,7 +16,7 @@ import com.profile.model.Phone;
 
 public class EntityModelMapper {
 
-	
+	// Entity model Mapper.
 	public final PersonEntity convertDTOToEntity(Person person){
 		
 		PersonEntity personEntity=null;
